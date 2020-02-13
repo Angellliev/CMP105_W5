@@ -12,6 +12,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	zombie.setTexture(&zombieTexture);
 
 	mario.setInput(input);
+	mario.setPosition(150, 200);
 	marioTexture.loadFromFile("gfx/MarioSheetT.png");
 	mario.setSize(sf::Vector2f(55, 108));
 	mario.setPosition(100, 100);
@@ -41,6 +42,27 @@ void Level::handleInput(float dt)
 	else
 	{
 		zombie.stopWalking();
+	}
+
+	if (input->isKeyDown(sf::Keyboard::J))
+	{
+		mario.move(-400 * dt, 0);
+		mario.startMarioWalk();
+		mario.marioFlip();
+
+	}
+	else if (input->isKeyDown(sf::Keyboard::L))
+	{
+		mario.move(400 * dt, 0);
+		mario.startMarioWalk();
+		mario.marioReverseFlip();
+
+	}
+	else
+	{
+		mario.stopMarioWalk();
+		mario.stopMarioSwim();
+		//mario.stopMarioDuck();
 	}
 }
 

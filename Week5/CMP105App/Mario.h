@@ -13,8 +13,16 @@ public:
 	Mario();
 	~Mario();
 	void update(float dt);
+
 	void startMarioWalk();
 	void stopMarioWalk();
+
+	void startMarioSwim();
+	void stopMarioSwim();
+
+	void startMarioDuck();
+	void stopMarioDuck();
+
 	void marioFlip();
 	void marioReverseFlip();
 		
