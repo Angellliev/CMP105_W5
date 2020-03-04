@@ -44,26 +44,7 @@ void Level::handleInput(float dt)
 		zombie.stopWalking();
 	}
 
-	if (input->isKeyDown(sf::Keyboard::J))
-	{
-		mario.move(-400 * dt, 0);
-		mario.startMarioWalk();
-		mario.marioFlip();
-
-	}
-	else if (input->isKeyDown(sf::Keyboard::L))
-	{
-		mario.move(400 * dt, 0);
-		mario.startMarioWalk();
-		mario.marioReverseFlip();
-
-	}
-	else
-	{
-		mario.stopMarioWalk();
-		mario.stopMarioSwim();
-		//mario.stopMarioDuck();
-	}
+	
 }
 
 // Update game objects
