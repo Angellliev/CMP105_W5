@@ -5,6 +5,10 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	window = hwnd;
 	input = in;
 
+	backgroundTexture.loadFromFile("gfx/Level1_1.png");
+	background.setSize(sf::Vector2f(11038, 675));
+	background.setTexture(&backgroundTexture);
+
 	zombie.setInput(input);
 	zombieTexture.loadFromFile("gfx/animZombie.png");
 	zombie.setSize(sf::Vector2f(55, 108));
@@ -12,7 +16,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	zombie.setTexture(&zombieTexture);
 
 	mario.setInput(input);
-	mario.setPosition(150, 200);
+	mario.setPosition(150, 1100);
 	marioTexture.loadFromFile("gfx/MarioSheetT.png");
 	mario.setSize(sf::Vector2f(55, 108));
 	mario.setPosition(100, 100);
@@ -27,6 +31,7 @@ Level::~Level()
 // handle user input
 void Level::handleInput(float dt)
 {
+	view.move(zombie.getPosition());
 	if (input->isKeyDown( sf::Keyboard::A) )
 	{
 		zombie.move(-400 * dt , 0);
@@ -46,20 +51,23 @@ void Level::handleInput(float dt)
 
 	
 }
-
+  
 // Update game objects
 void Level::update(float dt)
 {
 	mario.update(dt);
 	zombie.update(dt);
+	view.setCenter(mario.getPosition());
 }
 
 // Render level
 void Level::render()
 {
 	beginDraw();
+	window->draw(background);
 	window->draw(zombie);
 	window->draw(mario);
+	
 	endDraw();
 }
 

@@ -27,6 +27,10 @@ private:
 	sf::RenderWindow* window;
 	Input* input;
 
+	sf::Texture backgroundTexture;
+	sf::RectangleShape background;
+	sf::View view;
+
 	Zombie zombie;
 	sf::Texture zombieTexture;
 
